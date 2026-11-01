@@ -4,6 +4,7 @@ import AddTaskPage from "./pages/AddTaskPage";
 import BoardPage from "./pages/BoardPage";
 import ConfirmModal from "./components/ConfirmModal";
 import InfoModal from "./components/InfoModal";
+import ThemeToggle from "./components/ThemeToggle";
 
 function App() {
   const [newTaskTitle, setNewTaskTitle] = useState("");
@@ -113,6 +114,10 @@ function App() {
 
   return (
     <>
+      <div className="fixed top-4 right-4 z-50">
+        <ThemeToggle />
+      </div>
+      
       <Routes>
         <Route
           path="/"
@@ -141,7 +146,7 @@ function App() {
           }
         />
       </Routes>
-
+      
       <ConfirmModal
         isOpen={taskToDelete !== null}
         message="مطمئنی می‌خوای این تسک رو حذف کنی؟"
