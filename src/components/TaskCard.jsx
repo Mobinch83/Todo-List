@@ -2,7 +2,14 @@ import { useState } from "react";
 import { Draggable } from "@hello-pangea/dnd";
 import InfoModal from "./InfoModal";
 
-function TaskCard({ task, index, onStatusChange, onDelete, onEditTask }) {
+function TaskCard({
+  task,
+  index,
+  onStatusChange,
+  onDelete,
+  onEditTask,
+  onUndo,
+}) {
   const [isEditing, setIsEditing] = useState(false);
   const [editedTitle, setEditedTitle] = useState(task.title);
   const [showEditSuccess, setShowEditSuccess] = useState(false);
@@ -83,8 +90,18 @@ function TaskCard({ task, index, onStatusChange, onDelete, onEditTask }) {
                     >
                       ✅
                     </button>
-                    )}
-                    
+                  )}
+
+                  {task.status !== "ToDo" && (
+                    <button
+                      onClick={() => onUndo(task.id)}
+                      className="text-sm bg-white/70 hover:bg-white p-1.5 rounded-lg shadow-sm transition"
+                      title="برگردوندن به در حال انجام"
+                    >
+                      ↩️
+                    </button>
+                  )}
+
                   <button
                     onClick={() => setIsEditing(true)}
                     className="text-sm bg-white/70 hover:bg-white p-1.5 rounded-lg shadow-sm transition"

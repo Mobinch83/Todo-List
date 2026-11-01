@@ -7,6 +7,7 @@ function Board({
   onStatusChange,
   onDelete,
   onEditTask,
+  onUndo,
 }) {
   return (
     <div className="min-h-screen bg-gray-100 p-8 font-sans" dir="ltr">
@@ -38,6 +39,7 @@ function Board({
           onStatusChange={onStatusChange}
           onDelete={onDelete}
           onEditTask={onEditTask}
+          onUndo={onUndo}
           color="border-green-400"
         />
       </div>

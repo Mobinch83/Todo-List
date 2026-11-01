@@ -10,6 +10,7 @@ function BoardPage({
   onDelete,
   onEditTask,
   onDragEnd,
+  onUndo,
 }) {
   return (
     <div
@@ -40,6 +41,7 @@ function BoardPage({
               onStatusChange={onStatusChange}
               onDelete={onDelete}
               onEditTask={onEditTask}
+              onUndo={onUndo}
               color="border-blue-400"
               badgeColor="bg-blue-100 text-blue-700 dark:bg-blue-900/40 dark:text-blue-300"
             />
@@ -50,6 +52,7 @@ function BoardPage({
               onStatusChange={onStatusChange}
               onDelete={onDelete}
               onEditTask={onEditTask}
+              onUndo={onUndo}
               color="border-yellow-400"
               badgeColor="bg-yellow-100 text-yellow-700 dark:bg-yellow-900/40 dark:text-yellow-300"
             />
@@ -60,6 +63,7 @@ function BoardPage({
               onStatusChange={onStatusChange}
               onDelete={onDelete}
               onEditTask={onEditTask}
+              onUndo={onUndo}
               color="border-green-400"
               badgeColor="bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-300"
             />

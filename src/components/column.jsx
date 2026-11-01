@@ -7,7 +7,9 @@ function Column(props) {
       className={`bg-white/80 backdrop-blur-sm rounded-2xl shadow-md hover:shadow-lg transition-shadow p-5 w-full md:w-80 border-t-4 ${props.color}`}
     >
       <div className="flex justify-between items-center mb-5 pb-3 border-b border-gray-100">
-        <h3 className="text-lg font-bold text-gray-700">{props.displayTitle}</h3>
+        <h3 className="text-lg font-bold text-gray-700">
+          {props.displayTitle}
+        </h3>
         <span
           className={`text-xs font-bold px-2.5 py-1 rounded-full ${props.badgeColor}`}
         >
@@ -32,6 +34,7 @@ function Column(props) {
                 onStatusChange={props.onStatusChange}
                 onDelete={props.onDelete}
                 onEditTask={props.onEditTask}
+                onUndo={props.onUndo}
               />
             ))}
             {provided.placeholder}

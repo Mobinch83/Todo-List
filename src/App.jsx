@@ -51,6 +51,16 @@ function App() {
     setTasks(updatedTasks);
   };
 
+  const handleUndoTask = (id) => {
+    const updatedTasks = tasks.map((task) => {
+      if (task.id === id) {
+        return { ...task, status: "Doing" };
+      }
+      return task;
+    });
+    setTasks(updatedTasks);
+  };
+
   const handleDeleteTask = (id) => {
     setTaskToDelete(id);
   };
@@ -141,6 +151,7 @@ function App() {
               onDelete={handleDeleteTask}
               onEditTask={handleEditTask}
               onDragEnd={handleDragEnd}
+              onUndo={handleUndoTask}
             />
           }
         />
