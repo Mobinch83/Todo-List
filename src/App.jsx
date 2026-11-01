@@ -44,8 +44,7 @@ function App() {
   const handleStatusChange = (id) => {
     const updatedTasks = tasks.map((task) => {
       if (task.id === id) {
-        const newStatus = task.status === "Done" ? "ToDo" : "Done";
-        return { ...task, status: newStatus };
+        return { ...task, status: "Done" };
       }
       return task;
     });
@@ -117,7 +116,7 @@ function App() {
       <div className="fixed top-4 right-4 z-50">
         <ThemeToggle />
       </div>
-      
+
       <Routes>
         <Route
           path="/"
@@ -146,7 +145,7 @@ function App() {
           }
         />
       </Routes>
-      
+
       <ConfirmModal
         isOpen={taskToDelete !== null}
         message="مطمئنی می‌خوای این تسک رو حذف کنی؟"

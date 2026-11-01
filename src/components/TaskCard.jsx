@@ -4,8 +4,8 @@ import InfoModal from "./InfoModal";
 
 function TaskCard({ task, index, onStatusChange, onDelete, onEditTask }) {
   const [isEditing, setIsEditing] = useState(false);
-	const [editedTitle, setEditedTitle] = useState(task.title);
-	const [showEditSuccess, setShowEditSuccess] = useState(false);
+  const [editedTitle, setEditedTitle] = useState(task.title);
+  const [showEditSuccess, setShowEditSuccess] = useState(false);
 
   const priorityColors = {
     high: "bg-red-50 border-red-200 hover:border-red-300",
@@ -20,12 +20,12 @@ function TaskCard({ task, index, onStatusChange, onDelete, onEditTask }) {
   };
 
   const handleSave = () => {
-  if (editedTitle.trim() !== "") {
-    onEditTask(task.id, editedTitle);
-    setIsEditing(false);
-    setShowEditSuccess(true);
-  }
-};
+    if (editedTitle.trim() !== "") {
+      onEditTask(task.id, editedTitle);
+      setIsEditing(false);
+      setShowEditSuccess(true);
+    }
+  };
   return (
     <Draggable draggableId={task.id} index={index}>
       {(provided, snapshot) => (
@@ -75,13 +75,16 @@ function TaskCard({ task, index, onStatusChange, onDelete, onEditTask }) {
                 </span>
 
                 <div className="flex gap-1">
-                  <button
-                    onClick={() => onStatusChange(task.id)}
-                    className="text-sm bg-white/70 hover:bg-white p-1.5 rounded-lg shadow-sm transition"
-                    title="تغییر وضعیت"
-                  >
-                    ✅
-                  </button>
+                  {task.status !== "Done" && (
+                    <button
+                      onClick={() => onStatusChange(task.id)}
+                      className="text-sm bg-white/70 hover:bg-white p-1.5 rounded-lg shadow-sm transition"
+                      title="تغییر وضعیت"
+                    >
+                      ✅
+                    </button>
+                    )}
+                    
                   <button
                     onClick={() => setIsEditing(true)}
                     className="text-sm bg-white/70 hover:bg-white p-1.5 rounded-lg shadow-sm transition"
@@ -99,12 +102,12 @@ function TaskCard({ task, index, onStatusChange, onDelete, onEditTask }) {
                 </div>
               </div>
             </>
-				  )}
-				  <InfoModal
-  isOpen={showEditSuccess}
-  message="ویرایش با موفقیت انجام شد"
-  onClose={() => setShowEditSuccess(false)}
-/>
+          )}
+          <InfoModal
+            isOpen={showEditSuccess}
+            message="ویرایش با موفقیت انجام شد"
+            onClose={() => setShowEditSuccess(false)}
+          />
         </div>
       )}
     </Draggable>
