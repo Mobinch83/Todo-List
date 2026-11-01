@@ -92,7 +92,7 @@ function TaskCard({
                     </button>
                   )}
 
-                  {task.status !== "ToDo" && (
+                  {task.status === "Done" && (
                     <button
                       onClick={() => onUndo(task.id)}
                       className="text-sm bg-white/70 hover:bg-white p-1.5 rounded-lg shadow-sm transition"
