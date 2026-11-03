@@ -14,7 +14,7 @@ function BoardPage({
 }) {
   return (
     <div
-      className="min-h-screen bg-gradient-to-br from-gray-50 via-blue-50 to-indigo-50 dark:from-gray-900 dark:via-slate-900 dark:to-gray-900 p-6 md:p-10 transition-colors"
+      className="min-h-screen bg-linear-to-br from-gray-50 via-blue-50 to-indigo-50 dark:from-gray-900 dark:via-slate-900 dark:to-gray-900 p-6 md:p-10 transition-colors"
       dir="ltr"
     >
       <div className="max-w-7xl mx-auto">
@@ -25,7 +25,7 @@ function BoardPage({
           </h1>
           <Link
             to="/"
-            className="bg-gradient-to-r from-blue-500 to-indigo-500 hover:from-blue-600 hover:to-indigo-600 text-white px-5 py-2.5 rounded-xl shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition-all text-sm font-semibold"
+            className="bg-linear-to-r from-blue-500 to-indigo-500 hover:from-blue-600 hover:to-indigo-600 text-white px-5 py-2.5 rounded-xl shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition-all text-sm font-semibold"
           >
             ➕ افزودن تسک جدید
           </Link>

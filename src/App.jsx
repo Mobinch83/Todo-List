@@ -5,12 +5,17 @@ import BoardPage from "./pages/BoardPage";
 import ConfirmModal from "./components/ConfirmModal";
 import InfoModal from "./components/InfoModal";
 import ThemeToggle from "./components/ThemeToggle";
+import LoginPage from "./pages/LoginPage";
+import RegisterPage from "./pages/RegisterPage";
+import ProtectedRoute from "./components/ProtectedRoute";
+import { useAuth } from "./context/AuthContext";
 
 function App() {
   const [newTaskTitle, setNewTaskTitle] = useState("");
   const [newTaskPriority, setNewTaskPriority] = useState("medium");
   const [taskToDelete, setTaskToDelete] = useState(null);
   const [showAddSuccess, setShowAddSuccess] = useState(false);
+  const { currentUser, logout } = useAuth();
   const [tasks, setTasks] = useState(() => {
     const savedTasks = localStorage.getItem("tasks");
     if (savedTasks) {
@@ -128,31 +133,37 @@ function App() {
       </div>
 
       <Routes>
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/register" element={<RegisterPage />} />
         <Route
           path="/"
           element={
-            <AddTaskPage
-              newTaskTitle={newTaskTitle}
-              onTitleChange={setNewTaskTitle}
-              newTaskPriority={newTaskPriority}
-              onPriorityChange={setNewTaskPriority}
-              onAddTask={handleAddTask}
-            />
+            <ProtectedRoute>
+              <AddTaskPage
+                newTaskTitle={newTaskTitle}
+                onTitleChange={setNewTaskTitle}
+                newTaskPriority={newTaskPriority}
+                onPriorityChange={setNewTaskPriority}
+                onAddTask={handleAddTask}
+              />
+            </ProtectedRoute>
           }
         />
         <Route
           path="/board"
           element={
-            <BoardPage
-              todoTasks={todoTasks}
-              doingTasks={doingTasks}
-              doneTasks={doneTasks}
-              onStatusChange={handleStatusChange}
-              onDelete={handleDeleteTask}
-              onEditTask={handleEditTask}
-              onDragEnd={handleDragEnd}
-              onUndo={handleUndoTask}
-            />
+            <ProtectedRoute>
+              <BoardPage
+                todoTasks={todoTasks}
+                doingTasks={doingTasks}
+                doneTasks={doneTasks}
+                onStatusChange={handleStatusChange}
+                onDelete={handleDeleteTask}
+                onEditTask={handleEditTask}
+                onDragEnd={handleDragEnd}
+                onUndo={handleUndoTask}
+              />
+            </ProtectedRoute>
           }
         />
       </Routes>
