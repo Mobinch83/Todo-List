@@ -79,15 +79,44 @@ function AddTaskPage({
         </div>
 
         {/* حساب کاربری */}
-        <div className="mt-6 flex items-center justify-between border-t border-gray-100 pt-4 dark:border-gray-700">
-          <span className="text-sm text-gray-500 dark:text-gray-400">
-            👤 {currentUser?.username}
-          </span>
+        <div className="mt-6 flex items-center justify-between gap-3 border-t border-gray-100 pt-4 dark:border-gray-700">
+          <div className="flex min-w-0 items-center gap-3">
+            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-linear-to-br from-blue-500 to-indigo-500 text-sm font-bold uppercase text-white shadow-md">
+              {currentUser?.username?.charAt(0)}
+            </div>
+            <div className="min-w-0">
+              <p className="text-xs text-gray-400 dark:text-gray-500">
+                وارد شده با
+              </p>
+              <p
+                dir="ltr"
+                className="truncate text-right text-sm font-medium text-gray-700 dark:text-gray-200"
+                title={currentUser?.username}
+              >
+                {currentUser?.username}
+              </p>
+            </div>
+          </div>
+
           <button
             onClick={handleLogout}
-            className="rounded-lg border border-red-200 px-3 py-1.5 text-sm font-semibold text-red-500 transition hover:bg-red-50 dark:border-red-900/50 dark:text-red-400 dark:hover:bg-red-900/20"
+            className="flex shrink-0 items-center gap-1.5 whitespace-nowrap rounded-xl border border-red-200 bg-red-50/50 px-3.5 py-2 text-sm font-semibold text-red-500 transition-all hover:bg-red-500 hover:text-white hover:shadow-md active:scale-95 dark:border-red-900/50 dark:bg-red-900/10 dark:text-red-400 dark:hover:bg-red-500 dark:hover:text-white"
           >
-            خروج از حساب
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="h-4 w-4"
+            >
+              <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+              <polyline points="16 17 21 12 16 7" />
+              <line x1="21" y1="12" x2="9" y2="12" />
+            </svg>
+            خروج
           </button>
         </div>
       </div>
