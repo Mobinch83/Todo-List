@@ -1,4 +1,5 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 
 function AddTaskPage({
   newTaskTitle,
@@ -7,9 +8,17 @@ function AddTaskPage({
   onPriorityChange,
   onAddTask,
 }) {
+  const { currentUser, logout } = useAuth();
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    logout();
+    navigate("/login");
+  };
+
   return (
     <div
-      className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 dark:from-gray-900 dark:via-slate-900 dark:to-gray-900 flex items-center justify-center p-4 transition-colors"
+      className="min-h-screen bg-linear-to-br from-blue-50 via-indigo-50 to-purple-50 dark:from-gray-900 dark:via-slate-900 dark:to-gray-900 flex items-center justify-center p-4 transition-colors"
       dir="rtl"
     >
       <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 w-full max-w-md border border-gray-100 dark:border-gray-700">
@@ -56,7 +65,7 @@ function AddTaskPage({
 
           <button
             onClick={onAddTask}
-            className="w-full bg-gradient-to-r from-blue-500 to-indigo-500 hover:from-blue-600 hover:to-indigo-600 text-white font-semibold py-3 rounded-xl shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-200"
+            className="w-full bg-linear-to-r from-blue-500 to-indigo-500 hover:from-blue-600 hover:to-indigo-600 text-white font-semibold py-3 rounded-xl shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-200"
           >
             ➕ افزودن تسک
           </button>
@@ -67,6 +76,19 @@ function AddTaskPage({
           >
             مشاهده برد تسک‌ها ←
           </Link>
+        </div>
+
+        {/* حساب کاربری */}
+        <div className="mt-6 flex items-center justify-between border-t border-gray-100 pt-4 dark:border-gray-700">
+          <span className="text-sm text-gray-500 dark:text-gray-400">
+            👤 {currentUser?.username}
+          </span>
+          <button
+            onClick={handleLogout}
+            className="rounded-lg border border-red-200 px-3 py-1.5 text-sm font-semibold text-red-500 transition hover:bg-red-50 dark:border-red-900/50 dark:text-red-400 dark:hover:bg-red-900/20"
+          >
+            خروج از حساب
+          </button>
         </div>
       </div>
     </div>

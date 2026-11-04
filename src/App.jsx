@@ -8,15 +8,12 @@ import ThemeToggle from "./components/ThemeToggle";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 import ProtectedRoute from "./components/ProtectedRoute";
-import { useAuth } from "./context/AuthContext";
 
 function App() {
   const [newTaskTitle, setNewTaskTitle] = useState("");
   const [newTaskPriority, setNewTaskPriority] = useState("medium");
   const [taskToDelete, setTaskToDelete] = useState(null);
   const [showAddSuccess, setShowAddSuccess] = useState(false);
-  const { currentUser, logout } = useAuth();
-
   const [tasks, setTasks] = useState(() => {
     const savedTasks = localStorage.getItem("tasks");
     if (savedTasks) {
@@ -129,15 +126,7 @@ function App() {
 
   return (
     <>
-      <div className="fixed top-4 right-4 z-50 flex items-center gap-2">
-        {currentUser && (
-          <button
-            onClick={logout}
-            className="rounded-full border border-gray-200 bg-white/80 px-4 py-2 text-sm font-semibold text-gray-700 shadow-lg backdrop-blur-md transition hover:scale-105 dark:border-gray-700 dark:bg-gray-800/80 dark:text-gray-200"
-          >
-            خروج ({currentUser.username})
-          </button>
-        )}
+      <div className="fixed top-4 right-4 z-50">
         <ThemeToggle />
       </div>
 

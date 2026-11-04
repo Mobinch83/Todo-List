@@ -2,6 +2,11 @@ import { createContext, useContext, useState } from "react";
 
 const AuthContext = createContext(null);
 
+// eslint-disable-next-line react-refresh/only-export-components
+export function useAuth() {
+  return useContext(AuthContext);
+}
+
 export function AuthProvider({ children }) {
   const [currentUser, setCurrentUser] = useState(() => {
     const saved = localStorage.getItem("currentUser");
@@ -23,7 +28,7 @@ export function AuthProvider({ children }) {
 
   const login = (username, password) => {
     const user = getUsers().find(
-      (u) => u.username === username && u.password === password
+      (u) => u.username === username && u.password === password,
     );
     if (!user) {
       return { ok: false, error: "نام کاربری یا رمز عبور اشتباه است" };
@@ -44,8 +49,4 @@ export function AuthProvider({ children }) {
       {children}
     </AuthContext.Provider>
   );
-}
-
-export function useAuth() {
-  return useContext(AuthContext);
 }

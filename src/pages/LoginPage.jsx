@@ -26,7 +26,7 @@ function LoginPage() {
 
   return (
     <div
-      className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 dark:from-gray-900 dark:via-slate-900 dark:to-gray-900 flex items-center justify-center p-4 transition-colors"
+      className="min-h-screen bg-linear-to-br from-blue-50 via-indigo-50 to-purple-50 dark:from-gray-900 dark:via-slate-900 dark:to-gray-900 flex items-center justify-center p-4 transition-colors"
       dir="rtl"
     >
       <form
@@ -39,7 +39,7 @@ function LoginPage() {
             ورود
           </h2>
           <p className="text-sm text-gray-500 dark:text-gray-400 mt-2">
-            برای دیدن تسک‌هات وارد شو
+            برای دیدن تسک‌هات وارد شوید
           </p>
         </div>
 
@@ -78,18 +78,18 @@ function LoginPage() {
 
           <button
             type="submit"
-            className="w-full bg-gradient-to-r from-blue-500 to-indigo-500 hover:from-blue-600 hover:to-indigo-600 text-white font-semibold py-3 rounded-xl shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-200"
+            className="w-full bg-linear-to-r from-blue-500 to-indigo-500 hover:from-blue-600 hover:to-indigo-600 text-white font-semibold py-3 rounded-xl shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-200"
           >
             ورود
           </button>
 
           <p className="text-center text-sm text-gray-500 dark:text-gray-400 pt-2">
-            حساب نداری؟{" "}
+            حساب ندارید؟{" "}
             <Link
               to="/register"
               className="text-blue-500 dark:text-blue-400 hover:underline"
             >
-              ثبت‌نام کن
+              ثبت‌نام کنید
             </Link>
           </p>
         </div>

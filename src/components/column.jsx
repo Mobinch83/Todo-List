@@ -20,7 +20,7 @@ function Column(props) {
       <Droppable droppableId={props.title}>
         {(provided, snapshot) => (
           <div
-            className={`flex flex-col gap-3 min-h-[100px] rounded-lg transition-colors ${
+            className={`flex flex-col gap-3 min-h-25 rounded-lg transition-colors ${
               snapshot.isDraggingOver ? "bg-blue-50/50 p-2" : ""
             }`}
             ref={provided.innerRef}
