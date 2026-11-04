@@ -3,6 +3,9 @@ import Column from "../components/column";
 import { Link, useNavigate } from "react-router-dom";
 import { DragDropContext } from "@hello-pangea/dnd";
 import { useAuth } from "../context/AuthContext";
+import logoLight from "../assets/logo/logo-light.png";
+import logoDark from "../assets/logo/logo-dark.png";
+
 
 function BoardPage({
   todoTasks,
@@ -45,7 +48,17 @@ function BoardPage({
         {/* هدر */}
         <div className="flex flex-col sm:flex-row justify-between items-center mb-6 gap-4">
           <h1 className="text-4xl font-bold text-gray-800 dark:text-gray-100 flex items-center gap-3">
-            📋 <span>Todo List</span>
+            <img
+              src={logoLight}
+              alt="لوگو"
+              className="h-18 w-18 rounded-lg object-contain dark:hidden"
+            />
+            <img
+              src={logoDark}
+              alt="لوگو"
+              className="hidden h-18 w-18 rounded-lg object-contain dark:block"
+            />
+            <span>Todo List</span>
           </h1>
           <Link
             to="/"

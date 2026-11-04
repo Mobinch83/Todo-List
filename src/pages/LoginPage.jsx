@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
+import logoLight from "../assets/logo/logo-light.png";
+import logoDark from "../assets/logo/logo-dark.png";
 
 function LoginPage() {
   const { login } = useAuth();
@@ -34,7 +36,18 @@ function LoginPage() {
         className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 w-full max-w-md border border-gray-100 dark:border-gray-700"
       >
         <div className="text-center mb-8">
-          <div className="text-6xl mb-3">👋</div>
+          <div className="mb-3 flex justify-center">
+            <img
+              src={logoLight}
+              alt="لوگو"
+              className="h-16 w-16 rounded-xl object-contain dark:hidden"
+            />
+            <img
+              src={logoDark}
+              alt="لوگو"
+              className="hidden h-16 w-16 rounded-xl object-contain dark:block"
+            />
+          </div>
           <h2 className="text-2xl font-bold text-gray-800 dark:text-gray-100">
             ورود
           </h2>
